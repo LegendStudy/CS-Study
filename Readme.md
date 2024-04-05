@@ -8,7 +8,7 @@
 ## 🍀 Members
 | <a href="https://github.com/arinming"><img src="https://avatars.githubusercontent.com/u/97820109?v=4" width="100" height="100"></a> | <a href="https://github.com/toychip"><img src="https://avatars.githubusercontent.com/u/109949924?v=4" width="100" height="100"></a> | <a href="https://github.com/gyehwan24"><img src="https://avatars.githubusercontent.com/u/97265630?v=4" width="100" height="100"></a> | <a href="https://github.com/hojinida"><img src="https://avatars.githubusercontent.com/u/96263955?v=4" width="100" height="100"></a> | <a href="https://github.com/yjsmk0902"><img src="https://avatars.githubusercontent.com/u/52543606?v=4" width="100" height="100"></a> |
 |:---:|:---:|:---:|:---:|:---:|
-| 푸/김아린 | 토이/임준형 | 제이콥/백계환 | 허브/장호 | 루크/양승민 |
+| 푸/김아린 | 토이/임준형 | 제이콥/백계환 | 허브/장호진 | 루크/양승민 |
 
 
 
