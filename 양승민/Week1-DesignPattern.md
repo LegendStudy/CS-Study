@@ -9,7 +9,7 @@
 
 > **하나의 클래스**에 오직 **하나의 인스턴스**만 가지는 패턴이다. 하나의 클래스를 기반으로 여러 개의 개별적인 인스턴스를 만들 수 있지만, 그렇게 하지 않고 하나의 클래스를 기반으로 단 하나의 인스턴스를 만들어 이를 기반으로 로직을 만드는 데 쓰이며, 보통 DB 연결 모듈에 많이 쓰인다.
 
-![싱글톤 패턴](참고자료/싱글톤 패턴/Untitled.png)
+![싱글톤 패턴](참고자료/싱글톤_패턴/Untitled.png)
 
 - 장점 → 인스턴스 생성 비용 감소
 - 단점 → 의존성이 높아짐
@@ -127,7 +127,7 @@ true
 
 실제로 `Node.js`에서 `MongoDB`를 연결할 때 쓰는 `mongoose` 모듈에서 볼 수 있다.
 
-![MongoDB 로고](참고자료/싱글톤 패턴/Untitled%201.png)
+![MongoDB 로고](참고자료/싱글톤_패턴/Untitled%201.png)
 
 `mongoose`의 DB를 연결할 때 쓰는 `connect()`라는 함수는 싱글톤 인스턴스를 반환합니다. 다음은 `connect()` 함수를 구현할 때 쓰인 실제 코드이다.
 
@@ -154,7 +154,7 @@ Mongoose.prototype.connect = function(uri, options, callback) {
 
 `Node.js`에서 `MySQL` DB를 연결할 때도 싱글톤 패턴이 쓰인다.
 
-![MySQL 로고](참고자료/싱글톤 패턴/Untitled%202.png)
+![MySQL 로고](참고자료/싱글톤_패턴/Untitled%202.png)
 
 ```jsx
 const mysql = require('mysql');
@@ -213,7 +213,7 @@ pool.query(query, function (error, results, fields) {
 - 의존성이란 종속성이라고도 하며 A가 B에 의존성이 있다는 것은 B의 변경 사항에 대해 A 또한 변해야 된다는 것을 의미한다.
 
 
-![의존성 주입](참고자료/싱글톤 패턴/Untitled%203.png)
+![의존성 주입](참고자료/싱글톤_패턴/Untitled%203.png)
 
 위 그림처럼 메인 모듈이 **직접** 다른 하위 모듈에 대한 의존성을 주는게 아닌, 중간에 의존성 주입자가 이 부분을 가로채 메인 모듈이 **간접적**으로 의존성을 주입하는 방식이다.
 
@@ -252,9 +252,7 @@ pool.query(query, function (error, results, fields) {
 > 상위 클래스와 하위 클래스가 분리되기 때문에 느슨한 결합을 가지며, 상위 클래스에서는 인스턴스 생성 방식에 대해 전혀 알 필요가 없기 때문에 더 많은 유연성을 갖는다.
 > 또한 객체 생성 로직이 분리되어 있어 코드를 리팩토링하더라도 한 곳만 고칠 수 있게 되어 유지 보수성이 증가한다.
 
-![팩토리 패턴 예시](참고자료/팩토리 패턴/Untitled.png)
-
-팩토리 패턴 예시
+![팩토리 패턴 예시](참고자료/팩토리_패턴/Untitled.png)
 
 ---
 
@@ -378,3 +376,162 @@ public class Main {
 
 ---
 
+## 📚 전략 패턴
+
+### ☝ **전략 패턴이란?**
+
+
+> 정책 패턴(Policy Pattern)이라고도 하며, 객체의 행위를 바꾸고 싶은 경우 **직접** 수정하지 않고 전략이라고 부르는 **캡슐화한 알고리즘**을 컨텍스트 안에서 바꿔주면서 상호 교체가 가능하게 만드는 패턴이다.
+
+![전략 패턴](참고자료/전략_패턴/Untitled.png)
+
+---
+
+### ☝ **자바의 전략 패턴**
+
+
+```java
+interface PaymentStrategy{
+    public void pay(int amount);
+}
+
+class KAKAOCardStrategy implements PaymentStrategy {
+    private String name;
+    private String cardNumber;
+    private String cvv;
+    private String dateOfExpiry;
+
+    public KAKAOCardStrategy(String name, String cardNumber, String cvv, String dateOfExpiry) {
+        this.name = name;
+        this.cardNumber = cardNumber;
+        this.cvv = cvv;
+        this.dateOfExpiry = dateOfExpiry;
+    }
+
+    @java.lang.Override
+    public void pay(int amount) {
+        System.out.println(amount + " paid using KAKAOCard");
+    }
+}
+
+class LUNACardStratgy implements PaymentStrategy {
+    private String emailId;
+    private String password;
+
+    public LUNACardStratgy(String emailId, String password) {
+        this.emailId = emailId;
+        this.password = password;
+    }
+
+    @java.lang.Override
+    public void pay(int amount) {
+        System.out.println(amount + " paid using LUNACard");
+    }
+}
+
+class Item{
+    private String name;
+    private int price;
+
+    public Item(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+}
+
+class ShoppingCart {
+    List<Item> items;
+
+    public ShoppingCart() {
+        this.items = new ArrayList<Item>();
+    }
+
+    public void addItem(Item item) {
+        this.items.add(item);
+    }
+
+    public void removeItem(Item item) {
+        this.items.remove(item);
+    }
+
+    public int calculateTotal() {
+        int sum = 0;
+        for (Item item : items) {
+            sum += item.getPrice();
+        }
+
+        return sum;
+    }
+
+    public void pay(PaymentStrategy paymentMethod) {
+        int amount = calculateTotal();
+        paymentMethod.pay(amount);
+    }
+}
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        ShoppingCart cart = new ShoppingCart();
+
+        Item A = new Item("LukeA", 100);
+        Item B = new Item("LukeB", 300);
+
+        cart.addItem(A);
+        cart.addItem(B);
+
+        // pay by LUNACard
+        cart.pay(new LUNACardStratgy("yjsmk0902@gmail.com", "asdfqwer1234"));
+
+        // pay by KAKAOCard
+        cart.pay(new KAKAOCardStrategy("Luke", "0104939304949394", "142", "04/20"));
+    }
+}
+```
+
+---
+
+### ☝ **Passport의 전략 패턴**
+
+
+전략 패턴을 활용한 라이브러리로는 `passport`가 있다.
+
+![passport 홈페이지](참고자료/전략_패턴/Untitled%201.png)
+
+> Node.js에서 인증 모듈을 구현할 때 쓰는 미들웨어 라이브러리로, 여러 가지 **전략을 기반으로 인증할 수 있게 한다.**
+> 서비스 내의 회원가입된 아이디와 비밀번호를 기반으로 인증하는 LocalStrategy 전략과 여러 다른 서비스를 기반으로 인증하는 OAuth 전략 등을 지원한다.
+
+```jsx
+var passport = require('passport'),
+        LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(
+        function(username, password, done) {
+          User.findOne({ username: username }, function(err, user) {
+            if (err) {
+              return done(err);
+            }
+            if (!user) {
+              return done(null, false, { message: 'Incorrect username.' });
+            }
+            if (!user.validPassword(password)) {
+              return done(null, false, { message: 'Incorrect password.' });
+            }
+            return done(null, user);
+          });
+        }
+));
+```
+
+`passport.use(new LocalStratgy( …` 처럼 `passport.use()`라는 메서드에 전략을 매개변수로 넣어서 로직을 수행하는 것을 볼 수 있다.
+
+---
+
+---
