@@ -381,3 +381,10 @@ ex) 사각형 모양의 박스 안에 글자가 있다면 사각형 모양의
 모델과 뷰의 생명주기 관리
 ~~~
 
+## 1.1.9 MVP 패턴
+~~~
+MVP 패턴은 MVC로부터 파생되었으며 MVC에서 C에 해당하는 컨트롤러가 프레젠터로 교체된 패턴
+뷰와 프레젠터는 1:1 관계이기 때문에 MVC 패턴보다 더 강한 결합을 지닌 디자인 패턴
+~~~
+![MVP패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/MVP패턴.png)
+
