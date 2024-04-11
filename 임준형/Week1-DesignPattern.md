@@ -105,3 +105,95 @@ class CoffeeFactory {
 }
 ```
 
+
+## 1.1.3 전략 패턴
+
+객체의 행위를 바꾸고 싶은 경우 '직접' 수정하지 않고
+전략이라고 부르는 '캡슐화한 알고리즘'을 컨텍스트 안에서 바꿔주면서 상호 교체하는 패턴
+
+![전략패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/전략패턴.png)
+
+```java
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+interface PaymentStrategy {
+    void pay(int amount);
+}
+
+class KAKAOCardStrategy implements PaymentStrategy {
+    private String name;
+    private String cardNumber;
+    private String cvv;
+    private String dateOfExpiry;
+    
+    public KAKAOCardStrategy(String nm, String cNum, String cvv, String expiryDate) {
+        this.name = nm;
+        this.cardNumber = ccNum;
+        this.cvv = cvv;
+        this.date0fExpiry = expiryDate; 
+    }
+    
+    @Override
+    public void pay(int amount) {
+        System.out.println(amount +" paid using KAKAOCard."); 
+    }
+}
+
+class LUNACardStrategy implements PaymentStrategy {
+    private String emailId;
+    private String password;
+
+    public LUNACardStrategy(String email, String pwd) {
+        this.emailId = email;
+        this.password = pwd;
+    }
+
+    @Override
+    public void pay(int amount) {
+        System.out.println(amount + " paid using LUNACard.");
+    }
+}
+
+class Item {
+    private String name;
+    private int price;
+    public Item(String name, int cost) {
+        this.name = name;
+        this.price = cost; 
+    }
+    public String getName () {
+        return name;
+    }
+    public int getPrice() {
+        return price; 
+    }
+}
+
+
+class ShoppingCart { 
+    List<Item> items;
+    public ShoppingCart() {
+        this.items = new ArrayList<Item>();
+    }
+
+    public void addItem(Item item) {
+        this.items.add (item); 
+    }
+    public void removeltem(Item item) {
+        this.items.remove(item); 
+    }
+    public int calculateTotal() {
+        int sum = 0;
+        for (Item item : items) {
+            sum = +item.getPrice();
+        }
+        return sum;
+    }
+        public void pay(PaymentStrategy paymentMethod) { 
+            int amount = calculateTotal();
+            paymentMethod.pay(amount); 
+        }
+    }
+```
