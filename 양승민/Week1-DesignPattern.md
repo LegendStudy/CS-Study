@@ -236,3 +236,145 @@ pool.query(query, function (error, results, fields) {
   → 두 모듈 전부 추상화에 의존해야 한다.
 
   → 추상화 시에 세부사항에 의존하지 말아햐 한다.
+
+---
+
+---
+
+
+## 📚 팩토리 패턴
+
+### ☝ **팩토리 패턴이란?**
+
+
+> 객체를 사용하는 코드에서 객체 생성 부분을 떼어내 추상화한 패턴이자 상속 관계에 있는 두 클래스에서 상위 클래스가 **중요한 뼈대**를 결정하고, 하위 클래스에서 객체 생성에 관한 **구체적인 내용**을 결정하는 패턴이다.
+
+> 상위 클래스와 하위 클래스가 분리되기 때문에 느슨한 결합을 가지며, 상위 클래스에서는 인스턴스 생성 방식에 대해 전혀 알 필요가 없기 때문에 더 많은 유연성을 갖는다.
+> 또한 객체 생성 로직이 분리되어 있어 코드를 리팩토링하더라도 한 곳만 고칠 수 있게 되어 유지 보수성이 증가한다.
+
+![팩토리 패턴 예시](참고자료/팩토리 패턴/Untitled.png)
+
+팩토리 패턴 예시
+
+---
+
+### ☝ **자바스크립트의 팩토리 패턴**
+
+
+자바스크립트에서 팩토리 패턴을 구현한다면 간단하게 `new0bject()`로 구현할 수 있다.
+
+```jsx
+const num = new Object(42) 
+const str = new Object('abc')
+num.constructor.name; // Number 
+str.constructor.name; // String
+```
+
+파라미터에 따라 다른 타입의 객체를 생성하는 것을 볼 수 있다.
+
+```jsx
+class CoffeeFactory {
+	static createCoffee(type) {
+		const factory = factoryList[type]
+		return factory.createCoffee() 
+	}
+}
+class Latte {
+	constructor() {
+		this. name = "latte"
+	}
+}
+class Espresso { 
+	constructor(){
+		this. name = "Espresso" 
+	}
+}
+class LatteFactory extends CoffeeFactory{
+	static createCoffee() {
+		return new Latte() 
+	}
+}
+class EspressoFactory extends CoffeeFactory{
+	static createCoffee() { 
+		return new Espresso()
+	} 
+}
+const factoryList = { LatteFactory, EspressoFactory }
+
+const main = () => {
+	// 라떼 커피를 주문한다.
+	const coffee = CoffeeFactory.createCoffee("LatteFactory")
+	console.log(coffee.name) // latte 
+}
+main()
+```
+
+위 코드에서 `CoffeeFactory`라는 상위 클래스가 중요한 뼈대를 결정하고 하위 클래스인 `LatteFactory`가 구체적인 내용을 결정하고 있다.
+
+이는 DI라고도 볼수 있다. (CoffeeFactory에서 LatteFactory의 인스턴스를 생성하는 것이 아닌 LatteFactory에서 생성한 인스턴스를 CoffeeFactory에 주입하고 있기 때문)
+
+위처럼 정적 메서드로 정의하면 클래스를 기반으로 객체를 만들지 않고 호출이 가능하며, 해당 메서드에 대한 메모리 할당을 한 번만 할 수 있는 장점이 있다.
+
+---
+
+### ☝ **자바의 팩토리 패턴**
+
+
+```java
+enum CoffeeType {
+    LATTE,
+    ESPRESSO
+}
+
+abstract class Coffee {
+    protected String name;
+
+    public String getName() {
+        return name;
+    }
+}
+
+class Latte extends Coffee {
+    public Latte() {
+        name = "latte";
+    }
+}
+
+class Espresso extends Coffee {
+    public Espresso() {
+        name = "Espresso";
+    }
+}
+
+class CoffeeFactory {
+    public static Coffee createCoffee(CoffeeType type) {
+        switch (type) {
+            case LATTE -> {
+                return new Latte();
+            }
+            case ESPRESSO -> {
+                return new Espresso();
+            }
+            default -> throw new IllegalArgumentException("Invalid Coffee Type: " + type);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Coffee coffee = CoffeeFactory.createCoffee(CoffeeType.LATTE);
+        System.out.println(coffee.getName());   // latte
+    }
+}
+```
+
+#### 🗒️ **Enum**
+
+
+- 상수의 집합을 정의할 때 사용되는 타입이다. 자바에서는 Enum이 다른 언어보다 더 활발히 활용되며, 상수뿐만 아니라 메서드를 집어넣어 관리할 수도 있다.
+- Enum을 기반으로 상수 집합을 관리한다면 코드를 리팩토링할 때 상수 집합에 대한 로직 수정 시 이 부분만 수정하면 된다는 장점이 있고, 본질적으로 스레드세이프(Thread Safe)하기 때문에 싱글톤 패턴을 만들 때 도움이 된다.
+
+---
+
+---
+
