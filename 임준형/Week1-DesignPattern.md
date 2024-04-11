@@ -58,3 +58,50 @@ public class HelloWorld {
 <br>
 의존성 주입은 "상위 모듈은 하위모듈에서 어떠한 것도 가져오지 않아야한다"
 
+
+## 1.1.2 팩토리 패턴
+~~~
+객체를 사용하는 코드에서 객체 생성부분을 떼어 
+추상화 패턴이자 상속 관계에 있는 두 클래스에서 상위 클래스가 뼈대를 결정, 
+하위 클래스에서 비즈니스 로직을 담당하는 패턴
+~~~
+
+```java
+enum CoffeeType {
+    LATTE, ESPRESSO
+}
+
+abstract class Coffee {
+    protected String name;
+
+    public String getName() {
+        return name;
+    }
+}
+
+class Latte extends Coffee {
+    public Lattel() {
+        name = "latte";
+    }
+}
+
+class Espresso extends Coffee {
+    public Espresso() {
+        name = "Espresso";
+    }
+}
+
+class CoffeeFactory {
+    public static Coffee createCoffee(CoffeeType type) {
+        switch (type) {
+            case LATTE:
+                return new Latte();
+            case ESPRESSO:
+                return new Espresso();
+            default:
+                throw new IllegalArgumentException("Invalid coffee type: " + type);
+        }
+    }
+}
+```
+
