@@ -107,10 +107,10 @@ class CoffeeFactory {
 
 
 ## 1.1.3 전략 패턴
-
+~~~
 객체의 행위를 바꾸고 싶은 경우 '직접' 수정하지 않고
 전략이라고 부르는 '캡슐화한 알고리즘'을 컨텍스트 안에서 바꿔주면서 상호 교체하는 패턴
-
+~~~
 ![전략패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/전략패턴.png)
 
 ```java
@@ -197,3 +197,97 @@ class ShoppingCart {
         }
     }
 ```
+
+
+## 1.1.4 옵저버 패턴
+~~~
+옵저버 패턴은 주체가 어떤 객체의 상태 변화를 **관찰**하다가 상태 변화가 있을 때마다 
+메서드등을 통해 옵저버 목록에 있는 옵저버들에게 변화를 알려주는 패턴
+~~~
+
+### 트위터의 **옵저버 패턴**
+![트위터의 옵저버 패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/트위터의옵저버패턴.png)
+
+### 옵저버 패턴 구조
+![옵저버패턴구조](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/옵저버패턴구조.png)
+
+~~~
+옵저버 패턴은 주로 이벤트 기반 시스템에 사용하며 MVC 패턴에 사용된다.
+예를 들어 주체인 모델에서 변경 사항이 생겨 update() 메서드로 옵저버인 뷰에 알려주고 이를 기반으로 Controller가 동작한다.
+~~~
+
+```java
+import java.util.ArrayList; 
+import java.util.List;
+
+interface Subject {
+    void register(Observer obj); 
+    void unregister (Observer obj); 
+    void notifyObservers();
+    Object getUpdate(Observer obj); 
+}
+
+interface Observer { 
+    void update();
+}
+
+class Topic implements Subject {
+    private List<Observer> observers;
+    private String message;
+
+    public Topic() {
+        this.observers = new ArrayList<>();
+        this message = '"';
+    }
+
+
+    @Override
+    public void register(Observer obj) {
+        if (observers.contains(obj))
+            observers.add(obj);
+    }
+
+    @Override
+    public void unregister(Observer obj) {
+        observers.remove(obj);
+    }
+
+    @Override
+    public void notifyObservers() {
+        this.observers.forEachObserver::update ();
+    }
+
+    @Override
+    public Object getUpdate(Observer obj) {
+        return this.message;
+    }
+
+    public void postMessage(String msg) {
+        System.out.println("Message sended to Topic: " + msg);
+        this.message = msg;
+        notifyObservers();
+    }
+}
+
+class TopicSubscriber implements Observer {
+    private String name;
+    private Subject topic;
+
+    public TopicSubscriber(String name, Subject topic) {
+        this.name = name;
+        this.topic = topic;
+    }
+
+    @Override
+    public void update() {
+        String msg = (String) topic.getUpdate(this);
+        System.out.println(name + ":: got message > " + msg);
+    }
+}
+```
+~~~
+여기서 topic은 주체이자 객체임. 
+cLass Topic implements Subject를 통해 Subject interface를 구현했고
+Observer a = new TopicSubscriber("a", topic); 으로 옵저버를 선언할 때
+해당 이름과 어떠한 토픽의 옵저버가 될 것인지 정했음
+
