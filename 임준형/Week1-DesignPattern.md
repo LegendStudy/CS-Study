@@ -388,3 +388,12 @@ MVP 패턴은 MVC로부터 파생되었으며 MVC에서 C에 해당하는 컨트
 ~~~
 ![MVP패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/MVP패턴.png)
 
+## 1.1.10 MVVM 패턴
+
+~~~
+MVVM 패턴은 MVC의 C에 해당하는 컨트롤러가 뷰모델(view model)로 바뀐 패턴
+여기서 뷰모델은 뷰를 더 추상화한 계층이며 MVVM패턴은 MVC 패턴과는 다르게 커맨드와 데이터 바인딩을 가짐
+MVVM 패턴의 예: Vue.js
+~~~
+![MVVM패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/MVVM패턴.png)
+
