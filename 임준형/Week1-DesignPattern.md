@@ -290,4 +290,57 @@ class TopicSubscriber implements Observer {
 cLass Topic implements Subject를 통해 Subject interface를 구현했고
 Observer a = new TopicSubscriber("a", topic); 으로 옵저버를 선언할 때
 해당 이름과 어떠한 토픽의 옵저버가 될 것인지 정했음
+~~~
+
+## 1.1.5 프록시 패턴과 프록시 서버
+### 프록시 패턴
+~~~
+프록시 패턴은 대상 객체에 접근하기 전 접근에 대한 흐름을 가로채 해당 접근을 
+필터링하거나 수정하는 등의 역할을 하는 계층이 있는 패턴
+~~~
+
+![프록시 패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/프록시패턴.png)
+
+~~~
+중간에 프록시를 두어 보안, 데이터 검증, 캐싱, 로깅등에 사용
+실제로 AOP를 사용할 때
+자동으로 프록시 객체를 생성하여 빈 후처리기를 사용하여 활용
+~~~
+
+### 프록시 서버
+~~~
+서버와 클라이언트 사이에서 클라이언트가 자신을 통해 다른 네트워크 서비스에 
+간접적으로 접속 할 수 있게 해주는 컴퓨터 시스템이나 응용프로그램을 말함
+~~~
+
+![엔진엑스](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/엔진엑스.png)
+nginx는 비동기 이벤트 기반의 구조와 다수의 연결을 효과적으로 처리 가능한 웹 서버
+
+![프록시서버](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/프록시서버.png)
+nginx를 프록시 서버로 둬서 포트를 숨길 수 있고 정적 자원을 gzip 압축하거나, 메인 서버 앞단에서의 로깅할 수 있음
+
+#### 버퍼오버플로우란?
+~~~
+버퍼는 보통 데이터가 저장되는 메모리 공간으로 메모리 공간을 벗어나는 경우를 말함
+사용되지 않아야할 영역에 데이터가 덮어씌워져 주소, 값을 바꾸는 공격이 발생하기도함
+~~~
+
+![CLOUDFLARE](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/CLOUDFLARE.png)
+
+CloudFlare는 웹 서버 앞단에 프록시 서버로 두어 DDOS 공격 방어나 HTTPS 구축에 쓰임
+의심스러운 트래픽인지 판단해 CAPTCHA등을 기반으로 일정부분 막아주는 역할을 수행
+
+![CLOUDFLARE사용전과후](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/CLOUDFLARE사용전과후.png)
+
+### DDOS 공격 방어
+~~~
+DDOS는 짧은 기간 동안 네트워크에 많은 요청을 보내 네트워크를 마비시켜 웹 사이트의 가용성을 방해하는 사이버 공격 유형
+CloudFlare는 의심스러운 트래픽, 사람이 아닌 트래픽을 자동으로 차단
+~~~
+
+### CORS와 FrontEnd의 프록시 서버
+~~~
+CORS는 서버가 웹 브라우저에서 리소스를 로드할 때 다른 오리진을 통해 
+로드하지 못하게하는 HTTP 헤더 기반 메커니즘 
+~~~
 
