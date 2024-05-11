@@ -42,7 +42,7 @@ public class HelloWorld {
 이때 의존성 주입을 통해 모듈 간의 결합을 조금 더 느슨하게 만들어 줄 수 있다.
 
 #### 의존성 주입 전과 후의 차이
-![의존성주입](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/의존성주입.png)
+![의존성주입](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/week1/의존성주입.png)
 
 의존성 주입의 장점
 <br>
@@ -111,7 +111,7 @@ class CoffeeFactory {
 객체의 행위를 바꾸고 싶은 경우 '직접' 수정하지 않고
 전략이라고 부르는 '캡슐화한 알고리즘'을 컨텍스트 안에서 바꿔주면서 상호 교체하는 패턴
 ~~~
-![전략패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/전략패턴.png)
+![전략패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/week1/전략패턴.png)
 
 ```java
 import java.text.DecimalFormat;
@@ -206,10 +206,10 @@ class ShoppingCart {
 ~~~
 
 ### 트위터의 **옵저버 패턴**
-![트위터의 옵저버 패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/트위터의옵저버패턴.png)
+![트위터의 옵저버 패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/week1/트위터의옵저버패턴.png)
 
 ### 옵저버 패턴 구조
-![옵저버패턴구조](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/옵저버패턴구조.png)
+![옵저버패턴구조](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/week1/옵저버패턴구조.png)
 
 ~~~
 옵저버 패턴은 주로 이벤트 기반 시스템에 사용하며 MVC 패턴에 사용된다.
@@ -299,7 +299,7 @@ Observer a = new TopicSubscriber("a", topic); 으로 옵저버를 선언할 때
 필터링하거나 수정하는 등의 역할을 하는 계층이 있는 패턴
 ~~~
 
-![프록시 패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/프록시패턴.png)
+![프록시 패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/week1/프록시패턴.png)
 
 ~~~
 중간에 프록시를 두어 보안, 데이터 검증, 캐싱, 로깅등에 사용
@@ -313,10 +313,10 @@ Observer a = new TopicSubscriber("a", topic); 으로 옵저버를 선언할 때
 간접적으로 접속 할 수 있게 해주는 컴퓨터 시스템이나 응용프로그램을 말함
 ~~~
 
-![엔진엑스](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/엔진엑스.png)
+![엔진엑스](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/week1/엔진엑스.png)
 nginx는 비동기 이벤트 기반의 구조와 다수의 연결을 효과적으로 처리 가능한 웹 서버
 
-![프록시서버](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/프록시서버.png)
+![프록시서버](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/week1/프록시서버.png)
 nginx를 프록시 서버로 둬서 포트를 숨길 수 있고 정적 자원을 gzip 압축하거나, 메인 서버 앞단에서의 로깅할 수 있음
 
 #### 버퍼오버플로우란?
@@ -325,12 +325,12 @@ nginx를 프록시 서버로 둬서 포트를 숨길 수 있고 정적 자원을
 사용되지 않아야할 영역에 데이터가 덮어씌워져 주소, 값을 바꾸는 공격이 발생하기도함
 ~~~
 
-![CLOUDFLARE](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/CLOUDFLARE.png)
+![CLOUDFLARE](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/week1/CLOUDFLARE.png)
 
 CloudFlare는 웹 서버 앞단에 프록시 서버로 두어 DDOS 공격 방어나 HTTPS 구축에 쓰임
 의심스러운 트래픽인지 판단해 CAPTCHA등을 기반으로 일정부분 막아주는 역할을 수행
 
-![CLOUDFLARE사용전과후](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/CLOUDFLARE사용전과후.png)
+![CLOUDFLARE사용전과후](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/week1/CLOUDFLARE사용전과후.png)
 
 ### DDOS 공격 방어
 ~~~
@@ -360,7 +360,7 @@ CORS는 서버가 웹 브라우저에서 리소스를 로드할 때 다른 오�
 애플리케이션의 구성 요소를 세 가지 역할로 구분하여 개발 프로세스에서 각각의 구성 요소만 담당
 ~~~
 
-![MVC패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/MVC패턴.png)
+![MVC패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/week1/MVC패턴.png)
 
 ### 모델
 ~~~
@@ -386,7 +386,7 @@ ex) 사각형 모양의 박스 안에 글자가 있다면 사각형 모양의
 MVP 패턴은 MVC로부터 파생되었으며 MVC에서 C에 해당하는 컨트롤러가 프레젠터로 교체된 패턴
 뷰와 프레젠터는 1:1 관계이기 때문에 MVC 패턴보다 더 강한 결합을 지닌 디자인 패턴
 ~~~
-![MVP패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/MVP패턴.png)
+![MVP패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/week1/MVP패턴.png)
 
 ## 1.1.10 MVVM 패턴
 
@@ -395,5 +395,5 @@ MVVM 패턴은 MVC의 C에 해당하는 컨트롤러가 뷰모델(view model)로
 여기서 뷰모델은 뷰를 더 추상화한 계층이며 MVVM패턴은 MVC 패턴과는 다르게 커맨드와 데이터 바인딩을 가짐
 MVVM 패턴의 예: Vue.js
 ~~~
-![MVVM패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/MVVM패턴.png)
+![MVVM패턴](https://raw.githubusercontent.com/LegendStudy/CS-Study/master/임준형/image/week1/MVVM패턴.png)
 
