@@ -13,7 +13,7 @@
 > 도착한 순서대로 프로세스에 CPU를 할당한다.
 > 
 
-![FCFS](참고자료/CPU 스케줄링 알고리즘/Untitled.png)
+![FCFS](참고자료/CPU_스케줄링_알고리즘/Untitled.png)
 
 FCFS
 
@@ -32,7 +32,7 @@ FCFS
 > 실행 시간이 가장 짧은 프로세스에 CPU를 할당한다.
 > 
 
-![SJF](참고자료/CPU 스케줄링 알고리즘/Untitled%201.png)
+![SJF](참고자료/CPU_스케줄링_알고리즘/Untitled%201.png)
 
 SJF
 
@@ -44,7 +44,7 @@ SJF
 > 프로세스가 종료되거나 대기 상태로 전환될 때까지 우선순위가 가장 높은 프로세스에 CPU를 할당한다.
 > 
 
-![Priority](참고자료/CPU 스케줄링 알고리즘/Untitled%202.png)
+![Priority](참고자료/CPU_스케줄링_알고리즘/Untitled%202.png)
 
 Priority
 
@@ -63,7 +63,7 @@ Priority
 > 일정한 시간 할당량(`time quantum`)마다 프로세스를 전환한다.
 > 
 
-![Round Robin](참고자료/CPU 스케줄링 알고리즘/Untitled%203.png)
+![Round Robin](참고자료/CPU_스케줄링_알고리즘/Untitled%203.png)
 
 Round Robin
 
@@ -82,7 +82,7 @@ Round Robin
 > 프로세스의 CPU 사용 시간에 따라 우선순위가 동적으로 변경되며, 큐 간 이동이 가능하다.
 > 
 
-![다단계 큐](참고자료/CPU 스케줄링 알고리즘/Untitled%204.png)
+![다단계 큐](참고자료/CPU_스케줄링_알고리즘/Untitled%204.png)
 
 다단계 큐
 
